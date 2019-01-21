@@ -11,7 +11,8 @@ import sys
 import log
 import datetime
 import RPi.GPIO as GPIO
-
+with open('slackToken', 'r') as myfile:
+    SLACKTOKEN=myfile.read().replace('\n', '')
 #this will get the pi's IP to post into slack
 f = os.popen('ifconfig wlan0 | grep "inet\ addr" | cut -d: -f2 | cut -d" " -f1')
 ip = f.read()
@@ -22,7 +23,7 @@ oldIsOpen = None
 recording = 0
 # instantiate Slack client
 #export SLACK_BOT_TOKEN='SLACKTOKEN'
-slack_client = SlackClient('SLACKTOKEN')
+slack_client = SlackClient(SLACKTOKEN)
 slack_client.api_call
 # starterbot's user ID in Slack: value is assigned after the bot starts up
 starterbot_id = None
