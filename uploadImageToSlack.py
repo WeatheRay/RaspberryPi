@@ -3,7 +3,7 @@ import sys
 
 
 def uploadImage(file):
-
+	with open('data.txt', 'r') as myfile: data=myfile.read().replace('\n', '')
 	files = {
 	    'file': (file, open(file, 'rb')),
 	    'channels': (None, 'the-den'),
