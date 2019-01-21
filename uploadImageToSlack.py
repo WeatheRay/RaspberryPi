@@ -3,11 +3,11 @@ import sys
 
 
 def uploadImage(file):
-	with open('data.txt', 'r') as myfile: data=myfile.read().replace('\n', '')
+	with open('slackToken', 'r') as myfile: SLACKTOKEN=myfile.read().replace('\n', '')
 	files = {
 	    'file': (file, open(file, 'rb')),
 	    'channels': (None, 'the-den'),
-	    'token': (None, 'SLACKTOKEN'),
+	    'token': (None, SLACKTOKEN),
 	}
 
 	response = requests.post('https://slack.com/api/files.upload', files=files)
